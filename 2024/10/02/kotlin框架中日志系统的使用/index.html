@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yresin.github.io/pic/q6ym75_3840x1600.png">
 <meta property="article:published_time" content="2024-10-02T15:13:39.000Z">
-<meta property="article:modified_time" content="2024-10-02T15:48:35.431Z">
+<meta property="article:modified_time" content="2024-10-02T15:49:39.489Z">
 <meta property="article:author" content="yresin">
 <meta property="article:tag" content="kotlin">
 <meta property="article:tag" content="日志系统">
@@ -176,7 +176,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-10-02 23:48:35'
+  postUpdate: '2024-10-02 23:49:39'
 }</script><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
   restartOnPushState: false
 }
@@ -185,7 +185,7 @@ btf.addGlobalFn('pjaxSend', () => {
   Pace.restart()
 }, 'pace_restart')
 
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/pic/q6ym75_3840x1600.png);"><nav id="nav"><span id="blog-info"><a href="/" title="隐身大灰兔"><span class="site-name">隐身大灰兔</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">kotlin框架中日志系统的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-02T15:13:39.000Z" title="发表于 2024-10-02 23:13:39">2024-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-02T15:48:35.431Z" title="更新于 2024-10-02 23:48:35">2024-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/collection/">collection</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="kotlin框架中日志系统的使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>日志系统是开发过程中必不可少的一部分，它可以帮助我们了解程序的运行情况，排查问题，优化程序。在kotlin框架中，日志系统是必不可少的，它可以帮助我们了解程序的运行情况，排查问题，优化程序。</p>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/pic/q6ym75_3840x1600.png);"><nav id="nav"><span id="blog-info"><a href="/" title="隐身大灰兔"><span class="site-name">隐身大灰兔</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">kotlin框架中日志系统的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-02T15:13:39.000Z" title="发表于 2024-10-02 23:13:39">2024-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-02T15:49:39.489Z" title="更新于 2024-10-02 23:49:39">2024-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/collection/">collection</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="kotlin框架中日志系统的使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>日志系统是开发过程中必不可少的一部分，它可以帮助我们了解程序的运行情况，排查问题，优化程序。在kotlin框架中，日志系统是必不可少的，它可以帮助我们了解程序的运行情况，排查问题，优化程序。</p>
 <h4 id="日志系统的选择"><a href="#日志系统的选择" class="headerlink" title="日志系统的选择"></a>日志系统的选择</h4><p>日志系统有很多种，比如log4j、logback、slf4j等等。<br>Klogging 是一个专为 Kotlin 设计的日志库，追求灵活性与易用性。它运用 Kotlin 的惯用法来创建日志记录器和发送日志事件，特别适配于使用 Kotlin 协程的环境，如 Ktor 异步服务框架。</p>
 <h4 id="Klogging-的特点"><a href="#Klogging-的特点" class="headerlink" title="Klogging 的特点"></a>Klogging 的特点</h4><ul>
 <li>简单快速上手：只需几行代码就能配置和开始使用，如添加依赖并设置基本的日志配置。</li>
